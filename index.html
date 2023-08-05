@@ -17,37 +17,29 @@ function SetCookie(cookieName,cookieValue,nDays)
    }
    
    thevars = qstr.split("&");
-		for(i=0;i<thevars.length;i++) {
-			switch(thevars[i]) {
-				case "sfmc_sub":
-					thevars[i] = thevars[i].replace("=","='")+"'";
-					eval(thevars[i]);
-					SetCookie("SubscriberID",sfmc_sub,ExpireDays);
-					break;
-				case "j":
-					thevars[i] = thevars[i].replace("=","='")+"'";
-					eval(thevars[i]);
-					SetCookie("JobID",j,ExpireDays);
-					break;
-				case "l":
-					thevars[i] = thevars[i].replace("=","='")+"'";
-					eval(thevars[i]);
-					SetCookie("ListID",l,ExpireDays);
-					break;
-				case "u":
-					thevars[i] = thevars[i].replace("=","='")+"'";
-					eval(thevars[i]);
-					SetCookie("UrlID",u,ExpireDays);
-					break;
-				case "mid":
-					thevars[i] = thevars[i].replace("=","='")+"'";
-					eval(thevars[i]);
-					SetCookie("MemberID",mid,ExpireDays);
-					break;
-				default:
-					eval(thevars[i]);
-					break;
-			}
+
+var params = {};
+
+for (var i=0; i<thevars.length; i++) {
+    var pair = thevars[i].split("="); 
+    params[pair[0]] = pair[1];  // Save the parameter to a dictionary
+}
+
+// Now you can use params like this:
+if (params["sfmc_sub"] !== undefined) {
+    SetCookie("SubscriberID", params["sfmc_sub"], ExpireDays);
+}
+if (params["j"] !== undefined) {
+    SetCookie("JobID", params["j"], ExpireDays);
+}
+if (params["l"] !== undefined) {
+    SetCookie("ListID", params["l"], ExpireDays);
+}
+if (params["u"] !== undefined) {
+    SetCookie("UrlID", params["u"], ExpireDays);
+}
+if (params["mid"] !== undefined) {
+    SetCookie("MemberID", params["mid"], ExpireDays);
 }
 </script>
 </head>
