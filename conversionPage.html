@@ -10,7 +10,6 @@
     // Set the following parameters for your conversion parameters
     var convid = "1";
     var displayorder = "1";
-    var linkalias = "LinkAlias";
     var dataset = "<data amt=\"1\" unit=\"Downloads\" accumulate=\"true\" />";
     // For additional datasets, simply add them to the concatenation:
     // dataset=dataset+"<data amt=\"1\" unit=\"Dollars\" accumulate=\"true\">
@@ -35,6 +34,7 @@
     var urlid = getCookie("UrlID");
     var memberid = getCookie("MemberID");
     var batchid = getCookie("JobSubscriberBatchID");
+	var linkalias = getCookie("linkAlias");
 
     // Check if jobid, memberid, and SubscriberID are not null
     if(jobid && memberid && SubscriberID) {
@@ -50,7 +50,7 @@
             "<list>" + listid + "</list>" +
             "<BatchID>" + batchid + "</BatchID>" +
             "<original_link_id>" + urlid + "</original_link_id>" +
-            "<link_alias>Test Conversion Page</link_alias>" +
+            "<link_alias>"+ linkalias + "</link_alias>" +
             "<conversion_link_id>" + convid + "</conversion_link_id>" +
             "<display_order>" + convid + "</display_order>" +
             "<data_set>" + dataset + "</data_set></system>";
